@@ -23,6 +23,7 @@ const Navbar = () => {
                 <img src={logo} className='h-10' />
                 <ul className='hidden md:flex gap-10 text-white items-center font-medium text-lg'>
                     <a href="#Header" className='cursor-pointer hover:text-gray-400'>Home</a>
+                    <a href="#FindBus" className='cursor-pointer hover:text-gray-400'>Find</a>
                     <a href="#News" className='cursor-pointer hover:text-gray-400'>News</a>
                     <a href="#Weather" className='cursor-pointer hover:text-gray-400'>Weather</a>
                     <a href="#SOS" className='cursor-pointer hover:text-gray-400'>SOS</a>
@@ -38,6 +39,8 @@ const Navbar = () => {
                 </div>
                 <ul className='flex flex-col items-center gap-2 mt-3 px-3 text-lg font-medium'>
                     <a onClick={() => setshow(false)} href="#Header" className='px-4 py-2 rounded-full inline-block'>Home</a>
+                    <a onClick={() => setshow(false)} href="#FindBus" className='px-4 py-2 rounded-full inline-block'>FindBus</a>
+
                     <a onClick={() => setshow(false)} href="#News" className='px-4 py-2 rounded-full inline-block'>News</a>
                     <a onClick={() => setshow(false)} href="#Weather" className='px-4 py-2 rounded-full inline-block'>Weather</a>
                     <a onClick={() => setshow(false)} href="#SOS" className='px-4 py-2 rounded-full inline-block'>SOS</a>

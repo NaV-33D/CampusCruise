@@ -3,9 +3,10 @@ import React from 'react'
 const Face = () => {
   return (
     
-   <div><div className="relative top-40 flex flex-col w-fit md:w-1/3 h-full p-10 gap-2.5">
+   <div className='h-screen'>
+    <div className="relative top-40 flex flex-col w-fit md:w-1/3 h-full p-10 gap-2.5">
    <h1 className="font-bold text-xl md:text-3xl text-white">Welcome To,</h1>
-   <span className="font-extrabold text-4xl md:text-5xl text-white"><span className='text-red-400'>C</span>ampus<span className='text-red-400'>C</span>ruise</span>
+   <span className="font-extrabold text-4xl md:text-5xl text-white"><span className='text-red-500'>C</span>ampus<span className='text-red-500'>C</span>ruise</span>
 </div>
 
 
@@ -135,13 +136,38 @@ const Face = () => {
   </label>
 </div>
     </div>
-    <div className="absolute top-[30%] left-5 md:left-auto md:right-0 md:top-40 w-full md:w-1/3 h-1/3 p-5 md:p-10 mt-15 md:mt-0 flex flex-col md:items-end gap-2 z-[-1]">
+    <div className="absolute top-[30%] left-5 md:left-auto md:right-0 md:top-40 w-fit md:w-1/3 h-1/3 p-5 md:p-10 mt-15 md:mt-0 flex flex-col md:items-end gap-2 z-[-1]">
 
     <p className='font-bold text-xl md:text-3xl text-white'>Find Your </p>
     <span className='font-extrabold text-4xl md:text-6xl text-cyan-400'>Bus,</span> 
     <p className='font-bold text-xl md:text-3xl text-white'>Anytime, Anywhere</p>
 </div>
 
+
+<button
+  onClick={() => {
+    const element = document.getElementById("FindBus");
+    if (element) {
+      element.scrollIntoView(); 
+    }
+  }}
+  className="cursor-pointer bg-gray-800 px-3 py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none top-[80%] md:top-[85%] right-10 md:right-[48%] absolute"
+>
+  <svg
+    className="w-5 h-5"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+      strokeLinejoin="round"
+      strokeLinecap="round"
+    ></path>
+  </svg>
+</button>
 
 
 
