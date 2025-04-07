@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar'
 // import Card from './Components/Card'
 import Face from './Components/Face'
 import Find from './Components/Find'
+import Weather from './Components/Weather'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
     <Navbar />  
     <Face />
     <Find />
+    <Weather />
     </>
   )
 }

@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import bus1 from '../assets/bus1.jpeg';
+import bus2 from '../assets/bus2.jpeg';
 
 const buses = [
-  { id: 1, route: 'varur to hubli', start: 'varur', destination: 'hubli', time: '10:30 AM' },
+  {
+    id: 1,
+    route: 'varur to hubli',
+    start: 'varur',
+    destination: 'hubli',
+    time: '10:30 AM',
+    image1: bus1,
+    image2: bus2,
+  },
   { id: 2, route: 'varur to dharward', start: 'varur', destination: 'dharward', time: '11:00 AM' },
   { id: 3, route: 'varur to shiggaon', start: 'varur', destination: 'shiggaon', time: '11:30 AM' },
   { id: 4, route: 'varur to hubli', start: 'varur', destination: 'hubli', time: '12:00 PM' },
   { id: 5, route: 'varur to hubli', start: 'varur', destination: 'hubli', time: '12:30 PM' },
   { id: 6, route: 'varur to hubli', start: 'hubli', destination: 'varur', time: '12:30 PM' },
-
 ];
 
 const Find = () => {
@@ -17,23 +26,29 @@ const Find = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!start || !destination) {
       alert('Please enter both entry point and destination.');
       return;
     }
-
-    const filteredBuses = buses.filter(
-      (bus) =>
-        bus.start.toLowerCase() === start.toLowerCase() &&
-        bus.destination.toLowerCase() === destination.toLowerCase()
-    );
-
+  
+    const filteredBuses = buses.filter((bus) => {
+      const s = start.toLowerCase();
+      const d = destination.toLowerCase();
+      const bs = bus.start.toLowerCase();
+      const bd = bus.destination.toLowerCase();
+  
+      return (
+        (bs === s && bd === d) ||  (bs === d && bd === s) 
+      );
+    });
+  
     setResults(filteredBuses);
   };
+  
 
   return (
-    <div className="h-screen" id='FindBus'>
+    <div className="min-h-screen" id="FindBus">
       <div className="grid m-4 gap-7 sm:grid-cols-12 w-fit">
         {/* Left Panel */}
         <div className="min-h-[100px] rounded-lg sm:col-span-4">
@@ -54,7 +69,7 @@ const Find = () => {
                         onChange={(e) => setStart(e.target.value)}
                         placeholder="Enter starting point"
                         required
-                        className="input block w-full px-3 py-2 border border-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="block w-full px-3 py-2 border border-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -72,7 +87,7 @@ const Find = () => {
                         onChange={(e) => setDestination(e.target.value)}
                         placeholder="Enter destination"
                         required
-                        className="input block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -99,16 +114,27 @@ const Find = () => {
         </div>
 
         {/* Right Panel */}
-        <div className="min-h-[100px] rounded-lg shadow  sm:col-span-8">
+        <div className="min-h-[100px] rounded-lg shadow sm:col-span-8">
           <section className="results-section p-4" id="results-section">
-            <h2 className="text-white text-lg font-semibold mb-4">Available Buses Will Be Displayed Along With Route</h2>
+            <h2 className="text-white text-lg font-semibold mb-4">
+              Available Buses Will Be Displayed Along With Route
+            </h2>
 
-            <div className='flex flex-col md:flex-row justify-center items-center gap-4 mb-4 min-h-[200px]  bg-amber-300 rounded-lg'>
-                <img src="" alt="1" className='bg-red-700 h-[300px] md:w-[50%] w-full'/>
-                <img src="" alt="2" className='bg-green-700 h-[300px] md:w-[50%] w-full'/>
-            </div>
+            {/* Display images only if available in results */}
+            {results.length > 0 && results[0].image1 && (
+              <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4 min-h-[200px] rounded-lg">
+                <img
+                  src={results[0].image1}
+                  alt="Bus 1"
+                  className="h-[300px] md:w-[50%] w-full rounded"/>
+                <img
+                  src={results[0].image2}
+                  alt="Bus 2"
+                  className="h-[300px] md:w-[50%] w-full rounded"/>
+              </div>
+            )}
 
-
+            {/* Bus list */}
             <div id="bus-list">
               {results.length > 0 ? (
                 results.map((bus) => (
