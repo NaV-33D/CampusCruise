@@ -1,51 +1,78 @@
-import React, { useState } from 'react';
-import bus1 from '../assets/bus1.jpeg';
-import bus2 from '../assets/bus2.jpeg';
+import React, { useState } from "react";
+import bus1 from "../assets/bus1.jpeg";
+import bus2 from "../assets/bus2.jpeg";
 
 const buses = [
   {
     id: 1,
-    route: 'varur to hubli',
-    start: 'varur',
-    destination: 'hubli',
-    time: '10:30 AM',
+    route: "varur to hubli",
+    start: "varur",
+    destination: "hubli",
+    time: "10:30 AM",
     image1: bus1,
     image2: bus2,
   },
-  { id: 2, route: 'varur to dharward', start: 'varur', destination: 'dharward', time: '11:00 AM' },
-  { id: 3, route: 'varur to shiggaon', start: 'varur', destination: 'shiggaon', time: '11:30 AM' },
-  { id: 4, route: 'varur to hubli', start: 'varur', destination: 'hubli', time: '12:00 PM' },
-  { id: 5, route: 'varur to hubli', start: 'varur', destination: 'hubli', time: '12:30 PM' },
-  { id: 6, route: 'varur to hubli', start: 'hubli', destination: 'varur', time: '12:30 PM' },
+  {
+    id: 2,
+    route: "varur to dharward",
+    start: "varur",
+    destination: "dharward",
+    time: "11:00 AM",
+  },
+  {
+    id: 3,
+    route: "varur to shiggaon",
+    start: "varur",
+    destination: "shiggaon",
+    time: "11:30 AM",
+  },
+  {
+    id: 4,
+    route: "varur to hubli",
+    start: "varur",
+    destination: "hubli",
+    time: "12:00 PM",
+  },
+  {
+    id: 5,
+    route: "varur to hubli",
+    start: "varur",
+    destination: "hubli",
+    time: "12:30 PM",
+  },
+  {
+    id: 6,
+    route: "varur to hubli",
+    start: "hubli",
+    destination: "varur",
+    time: "12:30 PM",
+  },
 ];
 
 const Find = () => {
-  const [start, setStart] = useState('');
-  const [destination, setDestination] = useState('');
+  const [start, setStart] = useState("");
+  const [destination, setDestination] = useState("");
   const [results, setResults] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!start || !destination) {
-      alert('Please enter both entry point and destination.');
+      alert("Please enter both entry point and destination.");
       return;
     }
-  
+
     const filteredBuses = buses.filter((bus) => {
       const s = start.toLowerCase();
       const d = destination.toLowerCase();
       const bs = bus.start.toLowerCase();
       const bd = bus.destination.toLowerCase();
-  
-      return (
-        (bs === s && bd === d) ||  (bs === d && bd === s) 
-      );
+
+      return (bs === s && bd === d) || (bs === d && bd === s);
     });
-  
+
     setResults(filteredBuses);
   };
-  
 
   return (
     <div className="min-h-screen" id="FindBus">
@@ -54,10 +81,13 @@ const Find = () => {
         <div className="min-h-[100px] rounded-lg sm:col-span-4">
           <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-              <div className="bg-gray-800 py-8 px-4 shadow rounded-lg sm:px-10 text-white">
+              <div className="bg-black/80 py-8 px-4 shadow rounded-lg sm:px-10 text-white">
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label className="block text-md font-medium text-white" htmlFor="start">
+                    <label
+                      className="block text-md font-medium text-white"
+                      htmlFor="start"
+                    >
                       Entry Point:
                     </label>
                     <div className="mt-1">
@@ -75,7 +105,10 @@ const Find = () => {
                   </div>
 
                   <div className="mt-6">
-                    <label className="block text-md font-medium text-white" htmlFor="destination">
+                    <label
+                      className="block text-md font-medium text-white"
+                      htmlFor="destination"
+                    >
                       Destination:
                     </label>
                     <div className="mt-1">
@@ -126,11 +159,13 @@ const Find = () => {
                 <img
                   src={results[0].image1}
                   alt="Bus 1"
-                  className="h-[300px] md:w-[50%] w-full rounded"/>
+                  className="h-[300px] md:w-[50%] w-full rounded"
+                />
                 <img
                   src={results[0].image2}
                   alt="Bus 2"
-                  className="h-[300px] md:w-[50%] w-full rounded"/>
+                  className="h-[300px] md:w-[50%] w-full rounded"
+                />
               </div>
             )}
 
@@ -138,7 +173,10 @@ const Find = () => {
             <div id="bus-list">
               {results.length > 0 ? (
                 results.map((bus) => (
-                  <div key={bus.id} className="bg-white p-3 mb-2 rounded shadow font-semibold">
+                  <div
+                    key={bus.id}
+                    className="bg-white p-3 mb-2 rounded shadow font-semibold"
+                  >
                     Bus ID: {bus.id}, Route: {bus.route}, Time: {bus.time}
                   </div>
                 ))

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const API_KEY = "7eaa4986279bd09130f859de1413dbe4";
 
 const Weather = () => {
-  const [searchCity, setSearchCity] = useState("Durgapur");
+  const [searchCity, setSearchCity] = useState("Bangalore");
   const [searchWeather, setSearchWeather] = useState(null);
   const [fixedWeather, setFixedWeather] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,9 +53,15 @@ const Weather = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center items-center-safe h-screen gap-6 p-6 bg-gray-900" id="Weather">
+    <div
+      className="flex flex-wrap md:flex-nowrap justify-center items-center-safe min-h-screen gap-6 p-6 bg-gray-900"
+      id="Weather"
+    >
       {/* First Card - Searchable */}
-      <div className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-2xl transition">
+      <div
+        className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-xl transition"
+        style={{ "--tw-shadow-color": "rgba(0, 255, 255, 0.5)" }}
+      >
         <div className="flex justify-center items-center mb-6">
           <input
             type="text"
@@ -82,7 +88,9 @@ const Weather = () => {
               <h2 className="text-xl font-semibold mb-2">
                 Weather in {searchWeather.name}
               </h2>
-              <h1 className="text-4xl font-bold mb-4">{searchWeather.main.temp}°C</h1>
+              <h1 className="text-4xl font-bold mb-4">
+                {searchWeather.main.temp}°C
+              </h1>
               <div className="flex items-center mb-2">
                 <img
                   src={`https://openweathermap.org/img/wn/${searchWeather.weather[0].icon}.png`}
@@ -94,33 +102,37 @@ const Weather = () => {
               </div>
               <div className="mb-1 flex">
                 <svg
-            class="h-6 w-6 text-red-400 mr-0.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-            ></path>
-          </svg> Humidity: {searchWeather.main.humidity}%</div>
+                  class="h-6 w-6 text-red-400 mr-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                  ></path>
+                </svg>{" "}
+                Humidity: {searchWeather.main.humidity}%
+              </div>
 
               <div className="flex ">
                 <svg
-            class="h-6 w-6 text-cyan-500 mr-0.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
-            ></path>
-          </svg> Wind Speed: {searchWeather.wind.speed} km/h</div>
+                  class="h-6 w-6 text-cyan-500 mr-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                  ></path>
+                </svg>{" "}
+                Wind Speed: {searchWeather.wind.speed} km/h
+              </div>
             </div>
           )
         )}
@@ -130,11 +142,12 @@ const Weather = () => {
       {fixedWeather.map((weather, index) => (
         <div
           key={index}
-          className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-2xl transition"
+          className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-xl transition"
           style={{
             backgroundImage: `url('https://source.unsplash.com/400x300/?${weather.name}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            "--tw-shadow-color": "rgba(0, 255, 255, 0.5)",
           }}
         >
           <h2 className="text-xl font-semibold mb-2 bg-black/60 p-2 rounded">
@@ -153,36 +166,35 @@ const Weather = () => {
             </div>
           </div>
           <div className="mb-1 p-2 rounded flex">
-          <svg
-            class="h-6 w-6 text-red-400 mr-0.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-            ></path>
-          </svg>
+            <svg
+              class="h-6 w-6 text-red-400 mr-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+              ></path>
+            </svg>
             Humidity: {weather.main.humidity}%
           </div>
           <div className="p-2 rounded flex">
-          <svg
-            class="h-6 w-6 text-cyan-500 mr-0.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
-            ></path>
-          </svg>
-
+            <svg
+              class="h-6 w-6 text-cyan-500 mr-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+              ></path>
+            </svg>
             Wind Speed: {weather.wind.speed} km/h
           </div>
         </div>
