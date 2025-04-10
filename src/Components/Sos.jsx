@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Sos = () => {
   return (
     <div>
-      
+      <h1>halo</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Sos
+export default Sos;

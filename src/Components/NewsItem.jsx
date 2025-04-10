@@ -7,9 +7,9 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
         src={
           imageUrl
             ? imageUrl
-            : "https://via.placeholder.com/400x200.png?text=No+Image"
+            : "https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-autumn-camping.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         }
-        className="w-[90%] h-28 object-cover m-2 rounded-lg"
+        className="w-[95%] h-28 object-cover m-2 rounded-lg"
         alt="news"
       />
       <div className="p-4 flex flex-col justify-between flex-grow">

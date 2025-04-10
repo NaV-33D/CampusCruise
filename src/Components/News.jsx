@@ -7,7 +7,7 @@ const apiKey = "b66a977dae8b4b3faf624cb40e4dfabf";
 export class News extends Component {
   static defaultProps = {
     country: "in",
-    pageSize: 6, // Fetch 6 articles
+    pageSize: 6,
     category: "general",
   };
 
@@ -31,14 +31,38 @@ export class News extends Component {
 
   fetchArticles = async () => {
     this.setState({ loading: true });
-    const url = `
-https://newsapi.org/v2/everything?q=tesla&from=2025-03-09&sortBy=publishedAt&apiKey=b66a977dae8b4b3faf624cb40e4dfabf`;
-    const res = await fetch(url);
-    const data = await res.json();
-    this.setState({
-      articles: data.articles.slice(0, this.props.pageSize), // limit to 6
-      loading: false,
-    });
+
+    // const today = new Date().toISOString().split("T")[0]; // e.g., "2025-04-10"
+    // const today = "2025-04-01"; // ← CHANGE this to any valid recent date
+
+    const offsetDays = 5;
+    const today = new Date(Date.now() - offsetDays * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
+
+    const url = `https://newsapi.org/v2/everything?q=tesla&from=${today}&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error(`API Error: ${res.status} ${res.statusText}`);
+      }
+
+      const data = await res.json();
+
+      if (!data.articles) {
+        throw new Error("No articles found in response");
+      }
+
+      this.setState({
+        articles: data.articles.slice(0, this.props.pageSize),
+        loading: false,
+      });
+    } catch (error) {
+      console.error("Error fetching articles:", error.message);
+      this.setState({ articles: [], loading: false });
+    }
   };
 
   render() {
@@ -47,8 +71,7 @@ https://newsapi.org/v2/everything?q=tesla&from=2025-03-09&sortBy=publishedAt&api
         className="container py-4 md:mx-auto min-h-screen text-white"
         id="News"
       >
-        {/* <h1 className="text-center mb-4">Top Headlines</h1> */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {this.state.articles.map((article) => (
             <div className="flex justify-center items-center" key={article.url}>
               <NewsItem

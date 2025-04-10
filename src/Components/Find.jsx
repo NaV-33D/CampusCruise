@@ -81,7 +81,7 @@ const Find = () => {
         <div className="min-h-[100px] rounded-lg sm:col-span-4">
           <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-              <div className="bg-black/80 py-8 px-4 shadow rounded-lg sm:px-10 text-white">
+              <div className="bg-black/70 py-8 px-4 shadow rounded-lg sm:px-10 text-white">
                 <form onSubmit={handleSubmit}>
                   <div>
                     <label
@@ -147,9 +147,9 @@ const Find = () => {
         </div>
 
         {/* Right Panel */}
-        <div className="min-h-[100px] rounded-lg shadow sm:col-span-8">
+        <div className="min-h-[100px] rounded-lg shadow sm:col-span-8 md:mt-15 ">
           <section className="results-section p-4" id="results-section">
-            <h2 className="text-white text-lg font-semibold mb-4">
+            <h2 className="text-white text-lg font-semibold ">
               Available Buses Will Be Displayed Along With Route
             </h2>
 
@@ -175,7 +175,7 @@ const Find = () => {
                 results.map((bus) => (
                   <div
                     key={bus.id}
-                    className="bg-white p-3 mb-2 rounded shadow font-semibold"
+                    className="bg-black/60 text-white p-3 mb-2 rounded shadow font-semibold"
                   >
                     Bus ID: {bus.id}, Route: {bus.route}, Time: {bus.time}
                   </div>

@@ -54,12 +54,12 @@ const Weather = () => {
 
   return (
     <div
-      className="flex flex-wrap md:flex-nowrap justify-center items-center-safe min-h-screen gap-6 p-6 bg-gray-900"
+      className="flex flex-wrap lg:flex-nowrap justify-center items-center-safe min-h-screen gap-6 p-6 bg-gray-900"
       id="Weather"
     >
       {/* First Card - Searchable */}
       <div
-        className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-xl transition"
+        className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md hover:shadow-2xl transition-shadow duration-300"
         style={{ "--tw-shadow-color": "rgba(0, 255, 255, 0.5)" }}
       >
         <div className="flex justify-center items-center mb-6">
@@ -102,15 +102,15 @@ const Weather = () => {
               </div>
               <div className="mb-1 flex">
                 <svg
-                  class="h-6 w-6 text-red-400 mr-0.5"
+                  className="h-6 w-6 text-red-400 mr-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                   ></path>
                 </svg>{" "}
@@ -119,15 +119,15 @@ const Weather = () => {
 
               <div className="flex ">
                 <svg
-                  class="h-6 w-6 text-cyan-500 mr-0.5"
+                  className="h-6 w-6 text-cyan-500 mr-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
                   ></path>
                 </svg>{" "}
@@ -142,7 +142,7 @@ const Weather = () => {
       {fixedWeather.map((weather, index) => (
         <div
           key={index}
-          className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md shadow-lg hover:shadow-xl transition"
+          className="bg-black/80 text-white p-8 rounded-3xl w-full max-w-md hover:shadow-xl transition-shadow duration-400"
           style={{
             backgroundImage: `url('https://source.unsplash.com/400x300/?${weather.name}')`,
             backgroundSize: "cover",
@@ -167,15 +167,15 @@ const Weather = () => {
           </div>
           <div className="mb-1 p-2 rounded flex">
             <svg
-              class="h-6 w-6 text-red-400 mr-0.5"
+              className="h-6 w-6 text-red-400 mr-0.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
               ></path>
             </svg>
@@ -183,15 +183,15 @@ const Weather = () => {
           </div>
           <div className="p-2 rounded flex">
             <svg
-              class="h-6 w-6 text-cyan-500 mr-0.5"
+              className="h-6 w-6 text-cyan-500 mr-0.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
               ></path>
             </svg>
